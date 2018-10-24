@@ -60,8 +60,9 @@ def create_account
    clear
    sleep 1
    puts "What's your name?"
-   user = User.create(name: gets.chomp)
+   user = User.create(name: gets.chomp.capitalize)
    puts "Hey, #{user.name}. Your id number is #{user.id}. Please use it to login from now on"
+   sleep 2.5
    main_menu
    user
 end
