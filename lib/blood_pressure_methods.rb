@@ -3,7 +3,7 @@ def blood_pressure_input
  puts "Please enter you're blood pressure in the following format: xx/xx"
  pressure = gets.chomp
 
- BloodPressure.create(user_id: current_user.user_id, blood_pressure: pressure)
+ BloodPressure.create(user_id: current_user.user_id, blood_pressure: pressure, created_at: Time.now)
 
  numbers = pressure.split('/')
  numbers.map {|x| x.to_i}
@@ -33,5 +33,9 @@ end
 
 def blood_pressure_readings
   #we're going to return all the blood pressure readings pertaining to the user
-
+  readings = BloodPressure.where(user_id: current_user.user_id)
+  readings.each_with_index do |reading, i|
+    puts "#{i+1}. #{reading.blood_pressure}"
+    line_break
+  end
 end

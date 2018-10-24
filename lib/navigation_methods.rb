@@ -11,8 +11,12 @@ def main_menu
   choice = gets.chomp
   if choice == '1'
     #push to bloodpressure readings printout
+    clear
+    blood_pressure_readings
   elsif choice == '2'
     #push to last recommnded foods
+    clear
+    recommended_foods
   elsif choice == '3'
     blood_pressure_result(blood_pressure_input)
   elsif choice == '4'

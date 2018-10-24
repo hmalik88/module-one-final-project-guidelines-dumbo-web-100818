@@ -29,6 +29,15 @@ def give_user_high_sodium_food_recs
 end
 
 def recommended_foods
- #we're going to return the last set of recommended foods, which should be a list of 5 foods
-
+ last_recommended = FoodRec.last
+ line_break
+ puts "1.  #{last_recommended.food_rec1}"
+ line_break
+ puts "2.  #{last_recommended.food_rec2}"
+ line_break
+ puts "3.  #{last_recommended.food_rec3}"
+ line_break
+ puts "4.  #{last_recommended.food_rec4}"
+ line_break
+ puts "5.  #{last_recommended.food_rec5}"
 end

@@ -5,3 +5,7 @@ end
 def space
   puts ""
 end
+
+def line_break
+  puts "*************************"
+end
