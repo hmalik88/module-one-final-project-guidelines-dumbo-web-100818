@@ -39,7 +39,7 @@ end
 
 def is_a_returning_user
  puts "Enter Name"
- username = gets.chomp
+ username = gets.chomp.capitalize
  puts "Enter User ID"
  user_id = gets.chomp
  user = User.find_by(id:user_id.to_i, name: username)
