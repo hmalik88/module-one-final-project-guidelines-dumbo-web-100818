@@ -96,6 +96,9 @@ end
 def blood_pressure_input
  puts "Please enter you're blood pressure in the following format: xx/xx"
  pressure = gets.chomp
+
+ BloodPressure.create(user_id: current_user.user_id, blood_pressure: pressure)
+
  numbers = pressure.split('/')
  numbers.map {|x| x.to_i}
 end
@@ -120,14 +123,36 @@ def blood_pressure_result(blood_pressure_input)
   end
 end
 
+
 def give_user_low_sodium_food_recs
-  food_rec = FoodRec.create(user_id: current_user.user_id, food_rec1: low_sodium_rec[0].name ,food_rec2: low_sodium_rec[1].name, food_rec3: low_sodium_rec[2].name, food_rec4: low_sodium_rec[3].name,food_rec5: low_sodium_rec[4].name)
-  food_rec
+  FoodRec.create(user_id: current_user.user_id, food_rec1: low_sodium_rec[0].name ,food_rec2: low_sodium_rec[1].name, food_rec3: low_sodium_rec[2].name, food_rec4: low_sodium_rec[3].name,food_rec5: low_sodium_rec[4].name)
+
+  food_array
+
 end
 
 
- def give_user_high_sodium_food_recs
+def food_array
+  puts FoodRec.last.food_rec1
+  puts FoodRec.last.food_rec2
+  puts FoodRec.last.food_rec3
+  puts FoodRec.last.food_rec4
+  puts FoodRec.last.food_rec5
+  puts ""
+  navigation
+end
+
+def navigation
+    puts "Press enter to go to main menu"
+    choice = gets.chomp
+    system clear
+    main_menu
+end
+
+ def create_high_sodium_food_recs
   FoodRec.create(user_id: current_user.user_id, food_rec1: high_sodium_rec[0].name ,food_rec2: high_sodium_rec[1].name, food_rec3: high_sodium_rec[2].name, food_rec4: high_sodium_rec[3].name,food_rec5: high_sodium_rec[4].name)
+
+  food_array
  end
 
 def low_sodium_rec
