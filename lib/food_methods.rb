@@ -12,19 +12,14 @@ def low_sodium_rec
 end
 
 def food_array
-  puts FoodRec.last.food_rec1
-  puts FoodRec.last.food_rec2
-  puts FoodRec.last.food_rec3
-  puts FoodRec.last.food_rec4
-  puts FoodRec.last.food_rec5
-  puts ""
-  navigation
+
+
 end
 
 def give_user_low_sodium_food_recs
-  FoodRec.create(user_id: current_user.user_id, food_rec1: low_sodium_rec[0],food_rec2: low_sodium_rec[1], food_rec3: low_sodium_rec[2], food_rec4: low_sodium_rec[3],food_rec5: low_sodium_rec[4])
-  
-  food_array
+  arr = low_sodium_rec
+  rec = FoodRec.create(user_id: current_user.user_id, food_rec1: arr[0],food_rec2: arr[1], food_rec3: arr[2], food_rec4: arr[3],food_rec5: arr[4])
+  arr
 end
 
 def give_user_high_sodium_food_recs

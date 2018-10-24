@@ -18,7 +18,9 @@ def blood_pressure_result(blood_pressure_input)
     puts "Your BP is lookin' a little high! Maybe cut down on the salty foods."
     puts "Here are some recommendations"
     space
-    p give_user_low_sodium_food_recs
+    puts give_user_low_sodium_food_recs
+    space
+    navigation
   elsif (x[0] <= 129 && x[0] >= 91) && (x[1] <= 84 && x[1] >= 61)
       puts "Your blood pressure range is normal! Keep doin' what you're doin'!"
   elsif (x[0] <= 90 && x[0] >= 60) && (x[1] <= 60 && x[1] >= 33)
