@@ -1,4 +1,5 @@
 def welcome_screen
+  fork{ exec 'afplay', 'music/heart_beat.mp4'}
   puts (<<-HEREDOC)
 
 88888888888 888               888    d8b                            888          888
@@ -24,6 +25,7 @@ def welcome_screen
   HEREDOC
   puts "            An app for food recommendations based on your blood pressure! Press enter to continue".upcase
   x = gets.chomp
+  fork{ exec 'killall afplay'}
   clear
 end
 
