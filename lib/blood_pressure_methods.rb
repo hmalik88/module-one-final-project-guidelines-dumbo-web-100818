@@ -1,6 +1,6 @@
 
 def blood_pressure_input
- puts "Please enter you're blood pressure in the following format: xx/xx"
+ puts "Please enter you're blood pressure in the following format: xxx/xxx"
  pressure = gets.chomp
 
  BloodPressure.create(user_id: current_user.user_id, blood_pressure: pressure, created_at: Time.now)
@@ -26,6 +26,8 @@ def blood_pressure_result(blood_pressure_input)
   elsif (x[0] <= 90 && x[0] >= 60) && (x[1] <= 60 && x[1] >= 33)
     puts "Your BP is lookin' a little low! Maybe incorporate some of these foods in your diet:"
     give_user_high_sodium_food_recs
+    space
+    navigation
   elsif x[0] <= 59 && x[1] <= 40
     puts "Your blood pressure is dangerously low, please see a doctor ASAP!"
   end
@@ -34,8 +36,14 @@ end
 def blood_pressure_readings
   #we're going to return all the blood pressure readings pertaining to the user
   readings = BloodPressure.where(user_id: current_user.user_id)
+  if readings == []
+    puts "You don't have any readings!"
+  else
   readings.each_with_index do |reading, i|
     puts "#{i+1}. #{reading.blood_pressure}"
     line_break
   end
+end
+  space
+  navigation
 end

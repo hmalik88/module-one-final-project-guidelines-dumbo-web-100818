@@ -4,40 +4,37 @@ end
 
 
 def ask_if_returning_user
-  puts  "Are you a returning user? Y/N"
-  user_response = gets.chomp
+  prompt.select("Are you a returning user?", %w(Yes No))
 end
 
 def returning_user?
-   if ask_if_returning_user == 'Y'
-    is_a_returning_user
-   elsif ask_if_returning_user == 'N'
-     create_account
+   if ask_if_returning_user == "Yes"
+     is_a_returning_user
    else
-   puts "Not a valid input. Please enter Y/N"
-  end
+     create_account
+   end
 end
 
 def wrong_info
- puts "Whoops! That user doesn’t exist. Create your account or try again."
- puts ""
- puts "0. Exit"
- puts "1. Create Account"
- puts "2. Return to Login"
- puts ""
- puts "Please enter a number to perform an action."
- choice = gets.chomp
-   if choice == '0'
+  clear
+  choice =["Exit", "Create Account", "Return to Login"]
+   x = prompt.select("Whoops! That user doesn’t exist. Create your account or try again.", choice)
+   if x == choice[0]
     exit
-  elsif choice == '1'
+  elsif x == choice[1]
     create_account
-  elsif choice == '2'
+  elsif x == choice[2]
     system 'clear'
     is_a_returning_user
   end
 end
 
 def is_a_returning_user
+ clear
+ line_break
+ login_vertical_break
+ line_break
+ space
  puts "Enter Name"
  username = gets.chomp.capitalize
  puts "Enter User ID"
@@ -47,7 +44,7 @@ def is_a_returning_user
    if !user
     wrong_info
    else
-     puts "Hey #{user.name}!"
+     puts "Welcome back, #{user.name}!"
    end
  main_menu
 end
@@ -58,11 +55,16 @@ end
 
 def create_account
    clear
-   sleep 1
+   line_break
+   create_account_vertical_break
+   line_break
+   space
    puts "What's your name?"
    user = User.create(name: gets.chomp.capitalize)
-   puts "Hey, #{user.name}. Your id number is #{user.id}. Please use it to login from now on"
-   sleep 2.5
+   puts "Hey, #{user.name}! Your id number is #{user.id}. Please use it to login from now on."
+    Session.create(user_id: user.id, user_name: user.name, session_time: Time.now)
+
+   sleep 2.0
    main_menu
    user
 end

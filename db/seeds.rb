@@ -20,6 +20,3 @@ food_13 = Food.create(name: "pasta", sodium_level: "low")
 food_14 = Food.create(name: "muffins", sodium_level: "low")
 food_15 = Food.create(name: "broccoli", sodium_level: "low")
 food_16 = Food.create(name: "brussel sprouts", sodium_level: "low")
-
-
-
