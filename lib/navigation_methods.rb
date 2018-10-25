@@ -1,5 +1,5 @@
 def welcome_screen
-  fork{ exec 'afplay', 'music/heart_beat.mpa'}
+  fork{ exec 'afplay', 'music/heart_beat.m4a'}
   puts (<<-HEREDOC)
 
 88888888888 888               888    d8b                            888          888
