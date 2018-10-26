@@ -1,13 +1,16 @@
 def welcome_message
+  #welcomes user
  puts "Welcome!"
 end
 
 
 def ask_if_returning_user
+  #asks if user is returning user
   prompt.select("Are you a returning user?", %w(Yes No))
 end
 
 def returning_user?
+  #pushes a returing user to login OR pushes them to create an account
    if ask_if_returning_user == "Yes"
      is_a_returning_user
    else
@@ -16,6 +19,7 @@ def returning_user?
 end
 
 def wrong_info
+  #If user enters wrong info that does not match any records in the database, they get another menu asking them to choose to exit, create an account or try loging in again
   clear
   choice =["Exit", "Create Account", "Return to Login"]
    x = prompt.select("Whoops! That user doesn’t exist. Create your account or try again.", choice)
@@ -31,10 +35,7 @@ end
 
 def is_a_returning_user
    clear
-   line_break
-   login_vertical_break
-   line_break
-   space
+  login_box
    puts "Enter Name"
    username = gets.chomp.capitalize
    puts "Enter User ID"
@@ -55,15 +56,11 @@ end
 
 def create_account
    clear
-   line_break
-   create_account_vertical_break
-   line_break
-   space
+   create_account_box
    puts "What's your name?"
    user = User.create(name: gets.chomp.capitalize)
    puts "Hey, #{user.name}! Your id number is #{user.id}. Please use it to login from now on."
     Session.create(user_id: user.id, user_name: user.name, session_time: Time.now)
-
    sleep 2.0
    main_menu
    user

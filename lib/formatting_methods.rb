@@ -42,3 +42,17 @@ def menu_box
   longer_line_break
   space
 end
+
+def login_box
+  line_break
+  login_vertical_break
+  line_break
+  space
+end
+
+def create_account_box
+  line_break
+  create_account_vertical_break
+  line_break
+  space
+end
