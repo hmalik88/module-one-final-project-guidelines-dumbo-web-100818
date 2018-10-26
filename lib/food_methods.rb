@@ -31,24 +31,24 @@ end
 
 def recommended_foods
   choices = ["View last recommended foods", "View recommended foods by date"]
-  x = prompt.enum_select(" ", choices)
+  x = prompt.select(" ", choices)
   # binding.pry
   if food_rec_exists? != [] && x == choices[0]
     if food_rec_exists?.length > 1
-     last_recommended = food_rec_exists?.last
+     last_recommended = [food_rec_exists?.last]
     elsif food_rec_exists?.length == 1
      last_recommended = food_rec_exists?
     end
      line_break
-     puts "1.  #{last_recommended.food_rec1}"
+     puts "1.  #{last_recommended[0].food_rec1}"
      line_break
-     puts "2.  #{last_recommended.food_rec2}"
+     puts "2.  #{last_recommended[0].food_rec2}"
      line_break
-     puts "3.  #{last_recommended.food_rec3}"
+     puts "3.  #{last_recommended[0].food_rec3}"
      line_break
-     puts "4.  #{last_recommended.food_rec4}"
+     puts "4.  #{last_recommended[0].food_rec4}"
      line_break
-     puts "5.  #{last_recommended.food_rec5}"
+     puts "5.  #{last_recommended[0].food_rec5}"
      space
      puts "Here's your list of foods based on your last blood pressure reading."
      space
@@ -77,22 +77,26 @@ def food_recs_by_date
 end
 
 def food_rec_selection
-    prompt.enum_select("Previous Recommendations", food_recs_by_date)
+    prompt.select("Previous Recommendations", [food_recs_by_date, "Main Menu"])
     #binding.pry
 end
 
 def selected_food_rec
   checker = food_rec_selection
-  selection = food_rec_exists?.find do |food_rec|
-    food_rec.date.to_s[0..9] == checker
+  if checker == "Main Menu"
+    main_menu
+  else
+    selection = food_rec_exists?.find do |food_rec|
+      food_rec.date.to_s[0..9] == checker
+    end
+    selection
+    line_break
+    puts "1. #{selection.food_rec1}"
+    puts "2. #{selection.food_rec2}"
+    puts "3. #{selection.food_rec3}"
+    puts "4. #{selection.food_rec4}"
+    puts "5. #{selection.food_rec5}"
+    line_break
+    custom_navigation
   end
-  selection
-  line_break
-  puts "1. #{selection.food_rec1}"
-  puts "2. #{selection.food_rec2}"
-  puts "3. #{selection.food_rec3}"
-  puts "4. #{selection.food_rec4}"
-  puts "5. #{selection.food_rec5}"
-  line_break
-  custom_navigation
 end

@@ -19,4 +19,11 @@ Projects need to be approved prior to launching into them, so take some time to 
 
 ## Instructions
 Welcome to That's a Lot of Pressure!
-This is an interactive app that allows the user to log their blood pressure once a day and receive food recommendations based on that input.
+
+This is an interactive app that allows the user to log their blood pressure once a day and receive food recommendations if that input is out of the range of normal/healthy blood pressure.
+
+Upon creation of an account, a user is given an unique ID number that they must use to log in to the app. A feature yet to be added is 3 factor authentication if the user forgets this ID number. Future versions will ask the user for a birthdate, an answer to a security question and their own 5 digit pin number upon creation of an account so they can retrieve their login info.
+
+Once logged in, the user can either view the last 5 foods recommended to them or a menu of previous food recommendations sorted by date. A user can only access this information if they have previously logged a blood pressure and will be prompted to do so if they don't have any readings.
+
+If a user doesn't like a food recommendation, they will be able to delete it and get another. Likewise, a user can re-input their blood pressure for the day. Additionally they can clear all food recommendations and all blood pressure readings. 
