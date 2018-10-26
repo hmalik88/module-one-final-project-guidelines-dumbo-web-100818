@@ -12,6 +12,7 @@ def blood_pressure_result(blood_pressure_input)
   x = blood_pressure_input
   if  x[0] > 180 && x[1] > 120
     puts "Your blood pressure is dangerously high, please see a doctor ASAP!"
+    navigation
   elsif (x[0] <= 180 && x[0] >= 130) && (x[1] <= 120 && x[1] >= 85)
     space
     puts "Your BP is lookin' a little high! Maybe cut down on the salty foods."
@@ -21,7 +22,9 @@ def blood_pressure_result(blood_pressure_input)
     space
     navigation
   elsif (x[0] <= 129 && x[0] >= 91) && (x[1] <= 84 && x[1] >= 61)
-      puts "Your blood pressure range is normal! Keep doin' what you're doin'!"
+    puts "Your blood pressure range is normal! Keep doin' what you're doin'!"
+    puts "And maybe TREAT YO'SELF"
+    navigation
   elsif (x[0] <= 90 && x[0] >= 60) && (x[1] <= 60 && x[1] >= 33)
     puts "Your BP is lookin' a little low! Maybe incorporate some of these foods in your diet:"
     give_user_high_sodium_food_recs
@@ -29,6 +32,7 @@ def blood_pressure_result(blood_pressure_input)
     navigation
   elsif x[0] <= 59 && x[1] <= 40
     puts "Your blood pressure is dangerously low, please see a doctor ASAP!"
+    navigation
   end
 end
 

@@ -1,6 +1,17 @@
 def welcome_message
   #welcomes user
- puts "Welcome!"
+  puts (<<-HEREDOC)
+
+  db   d8b   db d88888b db       .o88b.  .d88b.  .88b  d88. d88888b     db
+  88   I8I   88 88'     88      d8P  Y8 .8P  Y8. 88'YbdP`88 88'         88
+  88   I8I   88 88ooooo 88      8P      88    88 88  88  88 88ooooo     YP
+  Y8   I8I   88 88~~~~~ 88      8b      88    88 88  88  88 88~~~~~
+  `8b d8'8b d8' 88.     88booo. Y8b  d8 `8b  d8' 88  88  88 88.         db
+   `8b8' `8d8'  Y88888P Y88888P  `Y88P'  `Y88P'  YP  YP  YP Y88888P     YP
+
+
+
+      HEREDOC
 end
 
 
