@@ -56,7 +56,9 @@ end
 def validate
   if food_rec_exists? == []
     blood_pressure_result(blood_pressure_input)
-  elsif Time.now.to_s[0..9] == food_rec_exists?.last.date.to_s[0..9]
+  elsif food_rec_exists? != []
+    blood_pressure_result(blood_pressure_input)
+  elsif(Time.now.to_s[0..9] == food_rec_exists?.last.date.to_s[0..9])
     puts "You've already logged your BP for today, you don't need another reading...too soon! Check tomorrow."
     space
     navigation
@@ -85,4 +87,64 @@ def custom_navigation
       clear
       custom_navigation
     end
+end
+
+def bp_navigation
+ menu_choices = ["Delete last BP", "Delete all BP's", "Return to main menu"]
+ readings = BloodPressure.where(user_id: current_user.user_id)
+ list_of_id = []
+   readings.each do |reading|
+     list_of_id << reading.id
+   end
+   food_recs = FoodRec.where(user_id: current_user.user_id)
+   list_of_food_rec_id = []
+   food_recs.each do |food_rec|
+     list_of_food_rec_id << food_rec.id
+   end
+
+ x = prompt.select("", menu_choices)
+   if x == menu_choices[0]
+     if readings.empty?
+       puts "You don't have any readings to delete!"
+       space
+       navigation
+     else
+       readings.each do |reading|
+         BloodPressure.destroy(reading.id).save
+       end
+       if food_recs != []
+         food_recs.each do |food_rec|
+           FoodRec.destroy(food_rec.id).save
+         end
+       end
+       space
+       clear
+       navigation
+     end
+   elsif x == menu_choices[1]
+     if readings.empty?
+       puts "You don't have any readings to delete!"
+       navigation
+     else
+       prompt.select("This will also delete all of your food recommendations, are you sure you want to continue?", %w(Yes no))
+       if prompt == "Yes"
+         readings.each do |reading|
+           BloodPressure.destroy(reading.id)
+         end
+          all_blood_pressures = BloodPressure.all
+          all_blood_pressures.each do |bp|
+            bp.reload
+          end
+         food_recs.each do |food_rec|
+           FoodRec.destroy(food_rec.id)
+         end
+         clear
+         navigation
+       else
+         bp_navigation
+       end
+     end
+   elsif x == menu_choices[2]
+     main_menu
+   end
 end

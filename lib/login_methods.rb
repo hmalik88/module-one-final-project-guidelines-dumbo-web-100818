@@ -1,5 +1,6 @@
 def welcome_message
   #welcomes user
+  fork{ exec 'afplay', 'music/yay.mp4'}
   puts (<<-HEREDOC)
 
   db   d8b   db d88888b db       .o88b.  .d88b.  .88b  d88. d88888b     db

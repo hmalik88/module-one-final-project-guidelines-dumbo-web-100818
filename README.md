@@ -26,4 +26,4 @@ Upon creation of an account, a user is given an unique ID number that they must 
 
 Once logged in, the user can either view the last 5 foods recommended to them or a menu of previous food recommendations sorted by date. A user can only access this information if they have previously logged a blood pressure and will be prompted to do so if they don't have any readings.
 
-If a user doesn't like a food recommendation, they will be able to delete it and get another. Likewise, a user can re-input their blood pressure for the day. Additionally they can clear all food recommendations and all blood pressure readings. 
+If a user doesn't like a food recommendation, they will be able to delete it and get another. Likewise, a user can re-input their blood pressure for the day. Additionally they can clear all food recommendations and all blood pressure readings.

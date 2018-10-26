@@ -3,6 +3,7 @@ def blood_pressure_input
 # This method takes an input of a blood pressure (without controlling for invalid user input), and creates an instance of a blood pressure reading for the current user.
    puts "Please enter you're blood pressure in the following format: xxx/xxx"
    pressure = gets.chomp
+   binding.pry
    BloodPressure.create(user_id: current_user.user_id, blood_pressure: pressure, created_at: Time.now)
    numbers = pressure.split('/')
    numbers.map {|x| x.to_i}
@@ -38,7 +39,9 @@ end
 
 def blood_pressure_readings
   #we're going to return all the blood pressure readings pertaining to the user
+
   readings = BloodPressure.where(user_id: current_user.user_id)
+
   if readings == []
     puts "You don't have any readings!"
   else
@@ -48,5 +51,5 @@ def blood_pressure_readings
     end
   end
   space
-  navigation
+  bp_navigation
 end
