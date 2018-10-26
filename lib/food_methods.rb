@@ -36,9 +36,9 @@ def recommended_foods
   if food_rec_exists? != [] && x == choices[0]
     if food_rec_exists?.length > 1
      last_recommended = food_rec_exists?.last
-   elsif food_rec_exists?.length == 1
+    elsif food_rec_exists?.length == 1
      last_recommended = food_rec_exists?
-   end
+    end
      line_break
      puts "1.  #{last_recommended.food_rec1}"
      line_break
@@ -63,15 +63,6 @@ def recommended_foods
     main_menu
   end
 end
-
-# def food_rec_dates
-#   dates = []
-#   food_rec_exists?.each do |food_rec|
-#     food_rec_date = food_rec.date
-#     dates << food_rec_date[0..9]
-#   end
-#   dates
-# end
 
 def food_rec_exists?
   FoodRec.where(user_id: current_user.user_id)

@@ -1,12 +1,11 @@
 
 def blood_pressure_input
- puts "Please enter you're blood pressure in the following format: xxx/xxx"
- pressure = gets.chomp
-
- BloodPressure.create(user_id: current_user.user_id, blood_pressure: pressure, created_at: Time.now)
-
- numbers = pressure.split('/')
- numbers.map {|x| x.to_i}
+# This method takes an input of a blood pressure (without controlling for invalid user input), and creates an instance of a blood pressure reading for the current user.
+   puts "Please enter you're blood pressure in the following format: xxx/xxx"
+   pressure = gets.chomp
+   BloodPressure.create(user_id: current_user.user_id, blood_pressure: pressure, created_at: Time.now)
+   numbers = pressure.split('/')
+   numbers.map {|x| x.to_i}
 end
 
 def blood_pressure_result(blood_pressure_input)
@@ -39,11 +38,11 @@ def blood_pressure_readings
   if readings == []
     puts "You don't have any readings!"
   else
-  readings.each_with_index do |reading, i|
-    puts "#{i+1}. #{reading.blood_pressure}"
-    line_break
+    readings.each_with_index do |reading, i|
+      puts "#{i+1}. #{reading.blood_pressure}"
+      line_break
+    end
   end
-end
   space
   navigation
 end

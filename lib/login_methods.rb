@@ -30,23 +30,23 @@ def wrong_info
 end
 
 def is_a_returning_user
- clear
- line_break
- login_vertical_break
- line_break
- space
- puts "Enter Name"
- username = gets.chomp.capitalize
- puts "Enter User ID"
- user_id = gets.chomp
- user = User.find_by(id:user_id.to_i, name: username)
- Session.create(user_id: user_id, user_name: username, session_time: Time.now)
-   if !user
-    wrong_info
-   else
-     puts "Welcome back, #{user.name}!"
-   end
- main_menu
+   clear
+   line_break
+   login_vertical_break
+   line_break
+   space
+   puts "Enter Name"
+   username = gets.chomp.capitalize
+   puts "Enter User ID"
+   user_id = gets.chomp
+   user = User.find_by(id:user_id.to_i, name: username)
+   Session.create(user_id: user_id, user_name: username, session_time: Time.now)
+     if !user
+      wrong_info
+     else
+       puts "Welcome back, #{user.name}!"
+     end
+   main_menu
 end
 
 def current_user

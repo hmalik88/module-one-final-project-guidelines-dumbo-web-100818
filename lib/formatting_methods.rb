@@ -33,3 +33,12 @@ end
 def create_account_vertical_break
   puts "*                       *\n*     CREATE ACCOUNT    *\n*                       *                       "
 end
+
+def menu_box
+  menu_line_break
+  menu_vertical_break
+  menu_line_break
+  space
+  longer_line_break
+  space
+end
